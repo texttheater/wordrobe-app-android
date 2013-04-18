@@ -1,9 +1,14 @@
 package org.wordrobe.wordrobe;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.Display;
 import android.view.Menu;
+import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
 
@@ -16,7 +21,13 @@ public class MainActivity extends Activity {
     
     private void setup() {
     	WebView myWebView = (WebView) findViewById(R.id.WebView1);
-    	myWebView.loadUrl("http://www.wordrobe.org");	
+    	myWebView.setWebViewClient(new WebViewClient() {});
+    	WebSettings webSettings = myWebView.getSettings();
+    	webSettings.setJavaScriptEnabled(true);
+    	webSettings.setUseWideViewPort(true);
+    	webSettings.setLoadWithOverviewMode(true);
+    	webSettings.setBuiltInZoomControls(true);
+    	myWebView.loadUrl("http://wordrobe.housing.rug.nl/Wordrobe/public/Login.aspx");	
     }
 
     @Override
